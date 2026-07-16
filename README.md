@@ -1,6 +1,5 @@
-# Root Cause Analysis 文献整理
+# Root Cause Analysis 文献
 
-根因定位方法可以按它在诊断链条中解决的核心问题区分：
 
 | 方法族 | 主要回答的问题 | 核心中间产物 |
 | --- | --- | --- |
@@ -41,7 +40,7 @@
 
 #### 1.2.2 汇总榜单与跨系统胜负反转
 
-- Pooled Leaderboards Hide System-Specific Winners: A Reporting-Protocol Audit of Offline Root-Cause Analysis Benchmarks（CoRR, 2026）[[PDF](https://arxiv.org/pdf/2606.29159)] [[CODE](https://anonymous.4open.science/r/rca-leaderboard-audit-artifact-1FC2)]：审计 OpenRCA、RCAEval 和 PetShop 的 11 个子系统、778 个案例，证明汇总 Top-1 排名会掩盖不同系统之间的方法胜负反转。
+- Pooled Leaderboards Hide System-Specific Winners: A Reporting-Protocol Audit of Offline Root-Cause Analysis Benchmarks（CoRR, 2026）[[PDF](https://arxiv.org/pdf/2606.29159)]：审计 OpenRCA、RCAEval 和 PetShop 的 11 个子系统、778 个案例，证明汇总 Top-1 排名会掩盖不同系统之间的方法胜负反转。
 
 ### 1.3 数据集与评测环境
 
@@ -62,6 +61,24 @@
 #### 1.3.4 IT/OT 多域多模态统一数据集
 
 - LEMMA-RCA: A Large Multi-modal Multi-domain Dataset for Root Cause Analysis（CoRR, 2024）[[PDF](https://arxiv.org/pdf/2406.05375)] [[CODE](https://github.com/KnowledgeDiscovery/rca_baselines)]：构建覆盖微服务、云计算、水处理与配水等 IT/OT 场景的多域多模态数据集，提供故障时间和根因实体标注，用于统一评测离线/在线及单模态/多模态方法。
+
+### 1.4 综述与可信评测
+
+#### 1.4.1 微服务故障诊断统一综述
+
+- Failure Diagnosis in Microservice Systems: A Comprehensive Survey and Analysis（ACM Transactions on Software Engineering and Methodology, 2026）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3715005)]：系统梳理 98 篇微服务故障检测、根因定位和故障分类研究，统一分析多模态数据、系统架构、任务定义、数据集、工具与评测指标，并总结工业实践与研究空白。
+
+#### 1.4.2 遥测数据统一评测
+
+- RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems with Telemetry Data（The Web Conference Companion, 2025）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3701716.3715290)][[CODE](https://github.com/phamquiluan/RCAEval)]：统一封装多种微服务 RCA 方法与多代公开遥测数据集，提供可复现实验入口，用于比较不同系统、故障类型、数据窗口和算法组合下的定位性能。
+
+#### 1.4.3 真实软件故障上的 LLM 评测
+
+- OpenRCA: Can Large Language Models Locate the Root Cause of Software Failures?（ICLR, 2025）[[PDF](https://openreview.net/pdf?id=M4qNIzQYpd)][[CODE](https://github.com/microsoft/OpenRCA)]：构建包含三个企业软件系统、335 个真实故障及日志、指标和调用链的开放基准，并以可调用分析工具的 RCA-Agent 评估大模型的跨模态取证与推理能力。
+
+#### 1.4.4 故障传播感知评测
+
+- Rethinking the Evaluation of Microservice RCA with a Fault Propagation-Aware Benchmark（FSE, 2026）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3797100)][[CODE](https://zenodo.org/records/19494726)]：构建含复杂故障传播、动态负载和服务到代码分层真值的大规模基准，重新评测 11 种方法并揭示简单公开数据对现有 RCA 性能的系统性高估。
 
 ---
 
@@ -103,7 +120,7 @@
 
 #### 2.2.4 关键路径＋对比 Trace 序列模式
 
-- Trace-based Multi-Dimensional Root Cause Localization of Performance Issues in Microservice Systems（ICSE, 2024）[[PDF](https://ieeexplore.ieee.org/abstract/document/10549362)] [[DATASET](https://zenodo.org/records/12751520)]：TraceContrast 从调用链提取关键路径，把服务、实例、版本和请求属性编码为事件序列，再通过对比序列模式挖掘与频谱分析定位多维根因。
+- Trace-based Multi-Dimensional Root Cause Localization of Performance Issues in Microservice Systems（ICSE, 2024）[[PDF](https://ieeexplore.ieee.org/abstract/document/10549362)]：TraceContrast 从调用链提取关键路径，把服务、实例、版本和请求属性编码为事件序列，再通过对比序列模式挖掘与频谱分析定位多维根因。
 
 #### 2.2.5 5G 信令轨迹重构与模式评分
 
@@ -113,9 +130,19 @@
 
 - HeMiRCA: Fine-Grained Root Cause Analysis for Microservices with Heterogeneous Data Sources（ACM Transactions on Software Engineering and Methodology, 2024）[[PDF](https://dl.acm.org/doi/full/10.1145/3674726)] [[CODE](https://github.com/zhouruixingzhu/HeMiRCA)]：从 Span 延迟构造时序异常分数，再用 Spearman 相关性衡量该分数与各服务指标的单调关联，分层定位根因服务和根因指标。
 
+### 2.3 事件图与端到端日志诊断
+
+#### 2.3.1 工业事件因果图
+
+- Groot: An Event-graph-based Approach for Root Cause Analysis in Industrial Settings（ASE, 2021）[[PDF](https://taoxiease.github.io/publications/ase21-groot.pdf)]：把指标、日志和运维活动归一为事件并实时构建因果事件图，同时允许 SRE 注入领域规则，在 eBay 数千个生产服务和 952 起真实事故上执行根因排序。
+
+#### 2.3.2 日志检测—定位交互式多任务学习
+
+- United We Stand: Towards End-to-End Log-based Fault Diagnosis via Interactive Multi-Task Learning（ASE, 2025）[[PDF](https://arxiv.org/pdf/2509.24364)]：提出 Chimera，在数据、特征和诊断结果三个层次双向传递异常检测与根因定位知识，以端到端多任务学习减少误差累积并降低对昂贵多模态监控的依赖。
+
 ---
 
-## 3. 依赖图传播、随机游走与案例匹配（Dependency Graph and Random Walks）
+## 3. 依赖图传播、随机游走与案例匹配（Dependency Graph and Propagation Ranking）
 
 - **方法共性**：这类方法通常不重新发现因果结构，而是在已有服务、实例、主机或专家关系图上注入异常权重，再执行路径搜索、随机游走或历史图匹配。
 
@@ -151,7 +178,33 @@
 
 #### 3.2.4 5G—传输—应用专家因果链匹配
 
-- Automated, Cross-Layer Root Cause Analysis of 5G Video-Conferencing Quality Degradation（ACM Internet Measurement Conference, 2025）[[PDF](https://dl.acm.org/doi/10.1145/3730567.3764434)] [[ARTIFACT/TESTBED](https://github.com/PrincetonUniversity/Domino-IMC)]：Domino 将 5G PHY/MAC/RLC、传输层和 WebRTC 遥测转成跨层事件，并在专家因果图中匹配从底层无线或网络因素传播至视频卡顿、码率下降的因果链。
+- Automated, Cross-Layer Root Cause Analysis of 5G Video-Conferencing Quality Degradation（ACM Internet Measurement Conference, 2025）[[PDF](https://dl.acm.org/doi/10.1145/3730567.3764434)][[CODE](https://github.com/PrincetonUniversity/Domino-IMC)]：Domino 将 5G PHY/MAC/RLC、传输层和 WebRTC 遥测转成跨层事件，并在专家因果图中匹配从底层无线或网络因素传播至视频卡顿、码率下降的因果链。
+
+### 3.3 性能调试、历史故障与事故图
+
+#### 3.3.1 主动式性能违约预测与定位
+
+- Seer: Leveraging Big Data to Navigate the Complexity of Performance Debugging in Cloud Microservices（ASPLOS, 2019）[[PDF](https://www.csl.cornell.edu/~delimitrou/papers/2019.asplos.seer.pdf)]：结合轻量 RPC 调用追踪与底层硬件监控，以深度模型提前预测 QoS 违约并定位最先触发性能退化的微服务，实现主动式性能根因诊断。
+
+#### 3.3.2 反事实性能调试与纠正动作
+
+- Sage: Practical & Scalable ML-Driven Performance Debugging in Microservices（ASPLOS, 2021）[[PDF](https://www.csl.cornell.edu/~delimitrou/papers/2021.asplos.sage.pdf)]：以无监督 VAE 和因果贝叶斯网络建模服务依赖与性能指标，再通过反事实推断在线识别 QoS 违约的根因服务并推荐纠正动作。
+
+#### 3.3.3 历史故障依赖图与案例解释
+
+- Actionable and Interpretable Fault Localization for Recurring Failures in Online Service Systems（ESEC/FSE, 2022；DéjàVu）[[PDF](https://netman.aiops.org/wp-content/uploads/2022/11/DejaVu-paper.pdf)][[CODE](https://github.com/NetManAIOps/DejaVu)]：从历史故障和组件依赖学习故障依赖图，对新故障同时定位故障组件与指标组，并用全局模型和相似历史案例提供可执行解释。
+
+#### 3.3.4 级联事故图抽取与诊断
+
+- Graph based Incident Extraction and Diagnosis in Large-Scale Online Systems（ASE, 2022；GIED）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3551349.3556904)]：从海量异常问题中抽取包含症状、受影响服务和属性的级联传播图，再以图神经网络识别真实事故并支持事故诊断。
+
+#### 3.3.5 Trace 与性能剖析上下文联合定位
+
+- CARE: Context Aware Root Cause Identification Using Distributed Traces and Profiling Metrics（IEEE Transactions on Software Engineering, 2025）[[PDF](https://ieeexplore.ieee.org/document/11262552)]：融合分布式调用链和性能剖析指标，以网络分析衡量服务、服务社区及请求上下文的重要性，再通过加权频谱分析定位单根因与双根因。
+
+#### 3.3.6 调用指标歧义消解
+
+- CMDiagnostor: An Ambiguity-Aware Root Cause Localization Approach Based on Call Metric Data（The Web Conference, 2023）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2023/02/WWW23-CMDiagnostor.pdf)][[CODE](https://github.com/NetManAIOps/CMDiagnostor)]：针对聚合调用指标无法准确恢复上下游请求路径的问题，用流量回归消除构图歧义，再通过异常检测、传播链剪枝与候选排序定位根因服务。
 
 ---
 
@@ -175,7 +228,7 @@
 
 #### 4.1.4 跨层实体因果图与代码级映射
 
-- TrinityRCL: Multi-Granular and Code-Level Root Cause Localization Using Multiple Types of Telemetry Data in Microservice Systems（IEEE Transactions on Software Engineering, 2023）[[PDF](https://ieeexplore.ieee.org/document/10034937)] [[THIRD-PARTY REPRODUCTION](https://github.com/Apex-ISET/TrinityRCL_Reproduction)]：融合指标、日志与调用链构建跨应用、服务、主机、指标和代码实体的因果图，并按异常相关性进行多粒度排序，日志可进一步映射到代码位置。
+- TrinityRCL: Multi-Granular and Code-Level Root Cause Localization Using Multiple Types of Telemetry Data in Microservice Systems（IEEE Transactions on Software Engineering, 2023）[[PDF](https://ieeexplore.ieee.org/document/10034937)]：融合指标、日志与调用链构建跨应用、服务、主机、指标和代码实体的因果图，并按异常相关性进行多粒度排序，日志可进一步映射到代码位置。
 
 ### 4.2 非侵入采集与时间因果
 
@@ -213,6 +266,32 @@
 
 - DynaCausal: Dynamic Causality-Aware Root Cause Analysis for Distributed Microservices（CoRR, 2025）[[PDF](https://arxiv.org/abs/2510.22613)]：融合指标、日志和调用链构建动态加权调用图，通过 Transformer、混合感知图注意力、动态对比学习和因果优先成对排序定位根因服务。
 
+### 4.4 干预、时滞、盲区与泛化
+
+#### 4.4.1 在线服务干预识别
+
+- Causal Inference-Based Root Cause Analysis for Online Service Systems with Intervention Recognition（KDD, 2022；CIRCA）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3534678.3539041)][[CODE](https://github.com/NetManAIOps/CIRCA)]：把在线服务 RCA 形式化为干预识别问题，利用系统架构构建因果贝叶斯网络，并通过故障前后条件分布变化定位根因指标。
+
+#### 4.4.2 有限可观测条件下的潜空间干预
+
+- Microservice Root Cause Analysis With Limited Observability Through Intervention Recognition in the Latent Space（KDD, 2024；LatentScope）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2024/09/SIGKDD_24_LatentScope.pdf)][[CODE](https://github.com/eBay/LatentScope)]：把服务、Pod、主机等异构根因组件建模为潜变量，并在指标有限和组件粒度不一致的条件下通过潜空间干预识别完成量化定位。
+
+#### 4.4.3 多时滞故障传播
+
+- Bridging the Delay: Lag-Aware Spatio-Temporal Causal Inference for Microservice Root Cause Analysis（FSE Industry, 2026；LagRCA）[[PDF](https://netman.aiops.org/wp-content/uploads/2026/04/fse2026-industry-paper77.pdf)]：显式建模上下游症状之间异质且动态的传播时滞，区分服务因果影响与指标共振，并输出可解释的传播路径。
+
+#### 4.4.4 调用图盲区下的多源定位
+
+- TORAI: Multi-Source Root Cause Analysis for Blind Spots in the Microservice Service Call Graph（FSE, 2026）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3808137)][[CODE](https://github.com/phamquiluan/RCAEval/tree/fse26)]：针对黑盒服务或缺失 Trace 形成的调用图盲区，从现有多源遥测估计异常强度、聚类症状、执行簇内因果排序并以假设检验定位细粒度根因。
+
+#### 4.4.5 元因果知识驱动的跨系统泛化
+
+- MetaRCA: A Generalizable Root Cause Analysis Framework for Cloud-Native Systems Powered by Meta Causal Knowledge（FSE, 2026）[[PDF](https://arxiv.org/pdf/2603.02032)]：离线融合 LLM、历史故障报告和可观测数据构建可跨拓扑复用的元因果图，在线按目标系统上下文实例化、加权和剪枝以实现可扩展定位。
+
+#### 4.4.6 多根因主动干预
+
+- Towards the Localization of Multi-Root-Cause Failures in Microservice Systems: An Active Intervention Framework（FSE, 2026）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3808180)]：用分层强化学习提出候选根因，以干预增强图注意力网络预测根因可能触发的故障场景，并通过预测场景与实时状态的迭代比较主动修正多根因结果。
+
 ---
 
 ## 5. 学习式图表示、多模态融合与联合诊断（Learned Graph Representation and Multimodal Fusion）
@@ -237,7 +316,7 @@
 
 - Root Cause Analysis of Anomalies in 5G RAN Using Graph Neural Network and Transformer（CoRR, 2024）[[PDF](https://arxiv.org/abs/2406.15638)] [[CODE](https://github.com/PINetDalhousie/Simba)]：Simba 从基站 KPI 动态学习邻接关系，以 GCN 提取空间传播特征、Transformer 建模时间依赖，联合识别异常类型并定位受影响基站。
 
-### 5.2 超图、层次图与云边协同
+### 5.2 超图、层次图与边云协同
 
 #### 5.2.1 级联条件学习＋异构超图
 
@@ -245,7 +324,7 @@
 
 #### 5.2.2 内核故障解析＋异构动态拓扑栈
 
-- Root Cause Localization for Microservice Systems in Cloud-edge Collaborative Environments（CoRR, 2024）[[PDF](https://arxiv.org/abs/2406.13604)] [[CODE_1](https://github.com/WDCloudEdge/HybridCloudConfig)] [[CODE_2](https://github.com/WDCloudEdge/MicroCERCL)]：MicroCERCL 先从通信内核日志和网络报文定位断连/丢包等内核根因，再以服务—实例—服务器动态拓扑栈、类型特定图卷积、LSTM 与图注意力池化输出应用级排名。
+- Root Cause Localization for Microservice Systems in Cloud-edge Collaborative Environments（CoRR, 2024）[[PDF](https://arxiv.org/abs/2406.13604)][[CODE](https://github.com/WDCloudEdge/MicroCERCL)]：MicroCERCL 先从通信内核日志和网络报文定位断连/丢包等内核根因，再以服务—实例—服务器动态拓扑栈、类型特定图卷积、LSTM 与图注意力池化输出应用级排名。
 
 #### 5.2.3 簇内节点定位＋簇级故障类型级联
 
@@ -256,6 +335,44 @@
 #### 5.3.1 域对抗多模态对齐＋传播规则 PageRank
 
 - UDA-RCL: Unsupervised Domain Adaptation for Microservice Root Cause Localization Utilizing Multimodal Data（IEEE Transactions on Services Computing, 2026）[[PDF](https://ieeexplore.ieee.org/document/11304608)] [[CODE](https://github.com/xsarvin/UDA-RCL)]：把日志、指标与调用链聚合为统一事件表示，通过多模态编码器和域对抗训练对齐成熟源系统与无标签目标系统，再用嵌入异常传播规则的 PageRank 定位根因服务。
+
+### 5.4 多模态联合诊断与多粒度输出
+
+#### 5.4.1 异常检测—定位联合学习
+
+- Eadro: An End-to-End Troubleshooting Framework for Microservices on Multi-source Data（ICSE, 2023）[[PDF](https://arxiv.org/pdf/2302.05092)]：联合编码日志、指标和调用链，在共享服务状态表示上共同优化异常检测与根因定位，避免两阶段方法重复处理数据和累积诊断偏差。
+
+#### 5.4.2 根因实例与故障类型联合诊断
+
+- Robust Failure Diagnosis of Microservice System through Multimodal Data（IEEE Transactions on Services Computing, 2023；DiagFusion）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2025/09/Robust_Failure_Diagnosis_of_Microservice_System_Through_Multimodal_Data.pdf)][[CODE](https://github.com/AIOps-Lab-NKU/DiagFusion)]：将指标、日志和调用链编码为服务实例表征，结合部署/调用依赖图与图神经网络联合输出根因实例和故障类型。
+
+#### 5.4.3 时序知识图谱统一多源诊断
+
+- No More Data Silos: Unified Microservice Failure Diagnosis With Temporal Knowledge Graph（IEEE Transactions on Services Computing, 2024；UniDiag）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2025/09/No_More_Data_Silos_Unified_Microservice_Failure_Diagnosis_With_Temporal_Knowledge_Graph.pdf)][[CODE](https://github.com/AIOps-Lab-NKU/UniDiag)]：用时序知识图谱统一指标、日志和调用链，通过动态图嵌入同时支持故障检测、根因定位与故障类型识别。
+
+#### 5.4.4 有效跨模态融合
+
+- FAMOS: Fault Diagnosis for Microservice Systems through Effective Multi-Modal Data Fusion（ICSE, 2025）[[PDF](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11029848)]：用独立编码器保留各模态内部特征，再以高斯注意力和交叉注意力学习模态间关系，联合完成微服务根因服务定位和故障类型诊断。
+
+#### 5.4.5 多粒度异构超图
+
+- Hypergraph Neural Network-based Multi-Granular Root Cause Localization for Microservice Systems（ASE, 2025；HyperRCA）[[PDF](https://doi.org/10.1109/ASE63991.2025.00099)]：以实例为节点、以部署/隶属/依赖关系构造三类超边，再用超图神经网络同时定位主机、服务和实例粒度的根因。
+
+#### 5.4.6 分布式 LLM 应用多层根因分析
+
+- LLMRCA: Multilevel Root Cause Analysis for LLM Applications Using Multimodal Observability Data（ACM Transactions on Software Engineering and Methodology, 2026）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3806200)][[CODE](https://github.com/IntelligentDDS/LLMRCA)]：面向分布式 LLM 应用构建指标、日志和调用链异构因果图，以残差图注意力自编码器联合定位主机、组件、代码和应用层根因，并处理时延与回答质量静默故障。
+
+#### 5.4.7 大模型与小分类器协作的少样本诊断
+
+- The Potential of One-Shot Failure Root Cause Analysis: Collaboration of the Large Language Model and Small Classifier（ASE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3691620.3695475)]：以 LLM 从极少故障样本和系统信息中提炼根因语义，再与轻量分类器协同完成 one-shot 根因识别，兼顾语义推理与低成本部署。
+
+#### 5.4.8 Trace/日志筛选后的指标级因果定位
+
+- MRCA: Metric-level Root Cause Analysis for Microservices via Multi-Modal Data（ASE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3691620.3695485)]：先用 Trace 和日志重构概率得到异常服务排序，再只在高风险服务上扩展指标因果图，以奖励机制控制扩张并剪枝得到指标级根因。
+
+#### 5.4.9 检测—分诊—定位统一无监督建模
+
+- ART: A Unified Unsupervised Framework for Incident Management in Microservice Systems（ASE, 2024）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2024/12/ASE24ART.pdf)]：依次以 Transformer、GRU 和 GraphSAGE 建模通道、时间与调用依赖，抽取可解释的统一故障表征，并在一个无监督框架中完成异常检测、故障分诊和根因定位。
 
 ---
 
@@ -329,7 +446,7 @@
 
 #### 7.2.2 5G CoT 蒸馏＋GRPO 推理模型
 
-- Reasoning Language Models for Root Cause Analysis in 5G Wireless Networks（CoRR, 2025）[[PDF](https://arxiv.org/pdf/2507.21974)] [[DATASET](https://huggingface.co/datasets/netop/TeleLogs)] [[EVALUATION CODE](https://github.com/gsma-labs/evals/tree/main/src/evals/telelogs)]：基于面向 5G RCA 的合成/策展 TeleLogs 基准，用多智能体生成结构化推理轨迹，先对 Qwen2.5 监督微调再以 GRPO 提升根因分类和解释能力。
+- Reasoning Language Models for Root Cause Analysis in 5G Wireless Networks（CoRR, 2025）[[PDF](https://arxiv.org/pdf/2507.21974)][[CODE](https://github.com/gsma-labs/evals/tree/main/src/evals/telelogs)]：基于面向 5G RCA 的合成/策展 TeleLogs 基准，用多智能体生成结构化推理轨迹，先对 Qwen2.5 监督微调再以 GRPO 提升根因分类和解释能力。
 
 ### 7.3 检索、知识库与置信校准
 
@@ -361,7 +478,7 @@
 
 #### 7.4.3 服务依赖图—程序依赖图跨层遍历
 
-- PRAXIS: Integrating Program Analysis with Observability for Root-Cause Analysis（DSN Research Track, 2026）[[PDF](https://arxiv.org/pdf/2512.22113)] [[ARTIFACT](https://doi.org/10.5281/zenodo.19163486)]：结合可观测性与静态程序分析工具，由 LLM 充当遍历策略，在服务依赖图和程序依赖图之间逐层搜索，定位微服务、代码路径或配置项；正式版本获 DSN 2026 Best Paper。
+- PRAXIS: Integrating Program Analysis with Observability for Root-Cause Analysis（DSN Research Track, 2026）[[PDF](https://arxiv.org/pdf/2512.22113)][[CODE](https://doi.org/10.5281/zenodo.19163486)]：结合可观测性与静态程序分析工具，由 LLM 充当遍历策略，在服务依赖图和程序依赖图之间逐层搜索，定位微服务、代码路径或配置项；正式版本获 DSN 2026 Best Paper。
 
 ### 7.5 多智能体递归推理
 
@@ -369,24 +486,224 @@
 
 - Towards In-Depth Root Cause Localization for Microservices with Multi-Agent Recursion-of-Thought（IEEE Transactions on Dependable and Secure Computing, 2026）[[PDF](https://arxiv.org/pdf/2605.14866)] [[CODE](https://github.com/LLMLog/RCLAgent)]：RCLAgent 按 Trace 图为 Span 分配专用 Agent，并沿拓扑递归、并行深入证据，最后融合根级诊断报告和全局证据图，以缓解上下文爆炸和串行推理低效。
 
+### 7.6 代码知识、基础模型与专家协作
+
+#### 7.6.1 代码知识增强的生成式 RCA
+
+- COCA: Generative Root Cause Analysis for Distributed Systems with Code Knowledge（ICSE, 2025）[[PDF](https://www.cse.cuhk.edu.hk/lyu/_media/conference/yli_icse2025_coca.pdf)]：从代码仓库提取依赖和实现知识，补充信息不完整的 issue 报告，同时生成根因位置和自然语言总结。
+
+#### 7.6.2 结构化深度思考基础模型
+
+- FoundRoot: Towards Foundation Model for Root Cause Analysis via Structured Deep Thinking（ICSE, 2026）[[PDF](https://netman.aiops.org/wp-content/uploads/2026/01/foundroot_camera_ready.pdf)][[CODE](https://github.com/NetManAIOps/FoundRoot)]：将指标语义、统计特征和因果结构组织为结构化推理过程，训练面向跨系统 RCA 的专用基础模型以提升未见系统上的泛化能力。
+
+#### 7.6.3 静态分析约束的错误传播路径重建
+
+- ErrorPrism: Reconstructing Error Propagation Paths in Cloud Service Systems（ASE Industry Showcase, 2025）[[PDF](https://zbchern.github.io/papers/ase25a.pdf)]：先用静态分析构造函数调用图并把日志字符串映射到候选函数，再由 LLM Agent 反向搜索完整多跳错误传播路径。
+
+#### 7.6.4 记忆增强递归推理
+
+- Agentic Memory Enhanced Recursive Reasoning for Root Cause Localization in Microservices（ICSE-SEIP, 2026；AMER-RCL）[[PDF](https://arxiv.org/pdf/2601.02732)]：以多智能体递归扩展候选原因，并在告警时间窗内积累和复用 Agentic Memory，减少跨告警重复探索和推理时延。
+
+#### 7.6.5 假设—验证并行搜索
+
+- Hypothesize-Then-Verify: Speculative Root Cause Analysis for Microservices with Pathwise Parallelism（ICSE-NIER, 2026；SpecRCA）[[PDF](https://arxiv.org/pdf/2601.02736)]：先由轻量模块快速起草多个根因假设，再沿不同路径并行验证，以提高 LLM RCA 的探索多样性和推理效率。
+
+#### 7.6.6 人在回路的批量云故障定位
+
+- Aloha: Localizing Batch Failures in Large-scale Cloud Systems via Contrast Analysis and Human-in-the-Loop Agent（FSE Industry, 2026）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2026/04/Yujia__Aloha_to_FSE_26.pdf)]：面向同一根因同时影响大量实例的批量故障，以对比分析和人在回路 Agent 贯通数据处理、异常定位与可解释根因模式总结。
+
+#### 7.6.7 Azure 事故根因标签体系
+
+- AutoARTS: Taxonomy, Insights and Tools for Root Cause Labelling of Incidents in Microsoft Azure（USENIX ATC, 2023）[[PDF](https://www.usenix.org/system/files/atc23-dogga.pdf)]：分析数年、两千余个 Azure 事故建立层次化贡献因素分类体系，并自动辅助事故复盘中的多标签根因标注。
+
 ---
 
-## 8. 跨场景与输出粒度索引
+
+## 9. 代表论文 → Related Work → 研究分支
 
 
-| 场景 | 代表方法 | 主要机制 |
-| --- | --- | --- |
-| 微服务/云原生 | BARO、MicroRCA、RUN、MULAN、Holistic RCA、RCAgent | 变点、图传播、因果发现、多模态与工具推理 |
-| 云边/边缘 IoT | MALEAF、MicroCERCL、Decentralized RCL、Cascaded GNN、Liability RCA | 轻量分类、异构层次图、去中心化与责任归因 |
-| 5G/通信 | STRCA、Simba、RAFT、Domino、TeleLogs RLM | 信令模式、时空图、协议注入、跨层链与领域推理 |
-| 自动驾驶 | ROCAS、DVCA、Fault Tree＋BN | 赛博—物理变异、理想模块替换、概率安全责任 |
-| 通用动态系统 | AERCA、Counterfactual Dynamical RCA、IDI | Granger 干预、动态 SCM、分布内修复 |
+### 9.1 代表论文一：Nezha——以单模态三分法汇聚到多模态细粒度 RCA
 
-| 输出粒度 | 代表方法 |
-| --- | --- |
-| KPI/指标 | CauseInfer、HeMiRCA、AERCA、KPIRoot+ |
-| 服务 | MicroRCA、RUN、MULAN、RCAgent |
-| 实例/主机 | MicroIRC、Holistic RCA、Hypergraph RCA |
-| 进程/代码 | MHP-RCA、TrinityRCL、PRAXIS |
-| 多根因/责任 | IDI、Liability RCA、Fault Tree＋BN |
-| 根因＋解释/建议 | Recommending RCA、TAMO、RCLAgent |
+**代表论文：**
+
+- Nezha: Interpretable Fine-Grained Root Causes Analysis for Microservices on Multi-modal Observability Data（ESEC/FSE, 2023）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3611643.3616249)][[CODE](https://github.com/IntelligentDDS/Nezha)]：将指标、日志和 Trace 统一成事件，比较正常期与故障期事件图模式，定位到服务、代码区域或资源类型。
+
+**Nezha Related Work 中的指标类工作：**
+
+- CauseInfer: Automated End-to-End Performance Diagnosis with Hierarchical Causality Graph in Cloud Environment（IEEE Transactions on Services Computing, 2019）[[PDF](https://ieeexplore.ieee.org/document/7563819)]：从服务间时滞依赖和服务内指标因果关系构造两层图，沿异常路径定位故障服务及根因指标。
+- MicroRCA: Root Cause Localization of Performance Issues in Microservices（NOMS, 2020）[[PDF](https://ieeexplore.ieee.org/document/9110353)][[CODE](https://github.com/elastisys/MicroRCA)]：从服务依赖、延迟和主机资源构造属性图，在异常子图上用个性化 PageRank 排序根因。
+- Groot: An Event-graph-based Approach for Root Cause Analysis in Industrial Settings（ASE, 2021）[[PDF](https://ieeexplore.ieee.org/document/9678708)]：将指标异常、状态日志和变更活动抽象成事件，以领域规则构造事件因果图并排序根因。
+
+**Nezha Related Work 中的日志类工作：**
+
+- Fast Dimensional Analysis for Root Cause Investigation in a Large-Scale Service Environment（Proceedings of the ACM on Measurement and Analysis of Computing Systems, 2020）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3392149)]：比较正常期与异常期的高频属性组合，寻找最能解释事故的维度和值。
+- Spectrum-Based Log Diagnosis（ESEM, 2020；SBLD）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3382494.3410684)]：把日志事件视为程序元素、执行阶段视为测试，使用频谱故障定位公式排序可疑日志模板。
+
+**Nezha Related Work 中的 Trace 类工作：**
+
+- Graph-Based Trace Analysis for Microservice Architecture Understanding and Problem Diagnosis（ESEC/FSE, 2020；GMTA）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3368089.3417066)]：将 Trace 聚合为调用路径和业务流图，支持架构理解与问题诊断。
+- T-Rank: A Lightweight Spectrum Based Fault Localization Approach for Microservice Systems（CCGRID, 2021）[[PDF](https://doi.org/10.1109/CCGrid51090.2021.00051)]：根据服务在正常和异常 Trace 中的覆盖差异计算频谱可疑度。
+- MicroRank: End-to-End Latency Issue Localization with Extended Spectrum Analysis in Microservice Environments（The Web Conference, 2021）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3442381.3449905)]：将正常/异常请求频谱与调用图 PageRank 结合，区分覆盖相近的根因服务或操作。
+
+
+### 9.2 代表论文二：Eadro——从单源定位推进到多源、端到端联合学习
+
+**代表论文：**
+
+- Eadro: An End-to-End Troubleshooting Framework for Microservices on Multi-source Data（ICSE, 2023）[[PDF](https://arxiv.org/pdf/2302.05092)]：分别编码日志、指标和 Trace，以图注意力建模服务依赖，并通过多任务学习联合异常检测与根因定位。其 Related Work 指出以往工作大多依赖 Trace，且通常把异常检测和根因定位割裂处理。
+
+**Eadro Related Work 中直接讨论的定位工作：**
+
+- CloudRanger: Root Cause Identification for Cloud Native Systems（CCGRID, 2018）[[PDF](https://ieeexplore.ieee.org/document/8411065)]：从 KPI 学习因果图，并通过二阶随机游走回溯异常传播源。
+- Localizing Failure Root Causes in a Microservice through Causality Inference（IWQoS, 2020；MicroCause）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2020/07/paper-IWQOS2020-MicroCause.pdf)]：在单个服务内部学习时序指标因果关系，结合异常传播先后顺序定位细粒度根因。
+- AutoMAP: Diagnose Your Microservice-Based Web Applications Automatically（The Web Conference, 2020）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3366423.3380111)]：动态恢复服务依赖，结合异常相关性和传播方向定位根因服务。
+- MicroHECL: High-Efficient Root Cause Localization in Large-Scale Microservice Systems（ICSE-SEIP, 2021）[[PDF](https://doi.org/10.1109/ICSE-SEIP52600.2021.00043)]：动态构造调用图，按照性能、可靠性和流量异常搜索并剪枝故障传播链。
+- Practical Root Cause Localization for Microservice Systems via Trace Analysis（IWQoS, 2021；TraceRCA）[[PDF](https://netman.aiops.org/wp-content/uploads/2021/05/1570705191.pdf)][[CODE](https://github.com/NetManAIOps/TraceRCA)]：从异常 Trace 挖掘候选服务集合，再利用正常/异常覆盖差异进行无监督排序。
+- MicroRank: End-to-End Latency Issue Localization with Extended Spectrum Analysis in Microservice Environments（The Web Conference, 2021）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3442381.3449905)]：以 Trace 为主要输入，将请求频谱和服务调用关系结合起来定位延迟根因。
+
+
+### 9.3 代表论文三：BARO——将指标 RCA 细分为统计、拓扑图和因果图
+
+**代表论文：**
+
+- BARO: Robust Root Cause Analysis for Microservices via Multivariate Bayesian Online Change Point Detection（FSE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3660805)][[CODE](https://github.com/phamquiluan/baro)]：用多变量贝叶斯在线变点检测确定故障窗口，再以非参数 RobustScorer 排序根因指标。其第 2.4 节明确将指标 RCA 分成 Statistical Analysis、Topology Graph-based Analysis 和 Causal Graph-based Analysis。
+
+**BARO Related Work 中的统计分析路线：**
+
+- ε-Diagnosis: Unsupervised and Real-Time Diagnosis of Small-Window Long-Tail Latency in Large-Scale Microservice Platforms（The Web Conference, 2019）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3308558.3313653)]：通过双样本检验比较正常与异常小窗口，以 ε-statistics 排序变化最显著的根因维度。
+- Scalable Statistical Root Cause Analysis on App Telemetry（ICSE-SEIP, 2021）[[PDF](https://doi.org/10.1109/ICSE-SEIP52600.2021.00038)]：从大规模事故遥测中挖掘差异模式，以统计精确率和召回率筛选回归根因。
+
+**BARO Related Work 中的拓扑图路线：**
+
+- MicroRCA: Root Cause Localization of Performance Issues in Microservices（NOMS, 2020）[[PDF](https://ieeexplore.ieee.org/document/9110353)][[CODE](https://github.com/elastisys/MicroRCA)]：在监控数据恢复出的服务—主机属性图上抽取异常子图并随机游走。
+- Sieve: Actionable Insights from Monitored Metrics in Distributed Systems（Middleware, 2017）[[PDF](https://ljiao.github.io/papers/middleware17.pdf)][[CODE](https://github.com/sieve-microservices)]：在已知系统拓扑上聚类降维指标，再用 Granger 因果关系筛选可操作的根因指标。
+- Causal Inference-Based Root Cause Analysis for Online Service Systems with Intervention Recognition（KDD, 2022；CIRCA）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3534678.3539041)][[CODE](https://github.com/NetManAIOps/CIRCA)]：使用系统架构约束结构图，并通过回归式假设检验识别条件机制发生变化的节点。
+
+**BARO Related Work 中的因果图路线：**
+
+- CauseInfer: Automated End-to-End Performance Diagnosis with Hierarchical Causality Graph in Cloud Environment（IEEE Transactions on Services Computing, 2019）[[PDF](https://ieeexplore.ieee.org/document/7563819)]：构造服务间和服务内两层因果图并沿异常路径搜索。
+- Localizing Failure Root Causes in a Microservice through Causality Inference（IWQoS, 2020；MicroCause）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2020/07/paper-IWQOS2020-MicroCause.pdf)]：利用时序因果图和异常先后关系定位服务内部根因。
+- Root Cause Analysis of Failures in Microservices through Causal Discovery（NeurIPS, 2022；RCD）[[PDF](https://dl.acm.org/doi/pdf/10.5555/3600270.3602529)][[CODE](https://github.com/azamikram/rcd)]：将故障前后数据视为观测和软干预样本，以故障指示节点和分治式 Ψ-PC 识别干预目标。
+- CausalRCA: Causal Inference Based Precise Fine-Grained Root Cause Localization for Microservice Applications（Journal of Systems and Software, 2023）[[PDF](https://www.sciencedirect.com/science/article/pii/S0164121223001193)][[CODE](https://github.com/AXinx/CausalRCA_code)]：以 DAG-GNN 学习非线性因果结构，再使用 PageRank 输出根因指标。
+- CMDiagnostor: An Ambiguity-Aware Root Cause Localization Approach Based on Call Metric Data（The Web Conference, 2023）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2023/02/WWW23-CMDiagnostor.pdf)][[CODE](https://github.com/NetManAIOps/CMDiagnostor)]：通过流量回归消除调用指标构图歧义，再执行异常检测、传播链剪枝和候选排序。
+
+
+### 9.4 代表论文四：因果 RCA 审计——从提出新方法转向验证发现器与排序器
+
+**代表论文：**
+
+- Root Cause Analysis for Microservice System based on Causal Inference: How Far Are We?（ASE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3691620.3695065)][[CODE](https://github.com/phamquiluan/RCAEval/tree/ase24)]：统一评测 9 种因果发现算法和 21 种“发现器—排序器”组合，表明大图、边方向、输入窗口和超参数会显著改变 RCA 结论。
+
+**该论文 Related Work 中直接承接的评测与综述工作：**
+
+- Anomaly Detection and Failure Root Cause Analysis in (Micro) Service-Based Cloud Applications: A Survey（ACM Computing Surveys, 2023）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3501297)]：从异常检测和 RCA 两方面整理服务化云应用研究，但不对不同 RCA 方法开展统一实验评测。
+- Evaluation of Causal Inference Techniques for AIOps（CODS-COMAD, 2021）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3430984.3431027)]：在 AIOps 场景中实验比较因果推断技术，为后续微服务因果 RCA 审计提供评测思路。
+- Causal Inference Techniques for Microservice Performance Diagnosis: Evaluation and Guiding Recommendations（ACSOS, 2021）[[PDF](https://doi.org/10.1109/ACSOS52086.2021.00029)]：比较多种因果发现方法与 PageRank 组合，给出微服务性能诊断的选择建议。
+
+**该论文重点审计的 RCA 方法：**
+
+- Root Cause Analysis of Failures in Microservices through Causal Discovery（NeurIPS, 2022；RCD）[[PDF](https://dl.acm.org/doi/pdf/10.5555/3600270.3602529)][[CODE](https://github.com/azamikram/rcd)]：代表软干预目标发现路线。
+- Causal Inference-Based Root Cause Analysis for Online Service Systems with Intervention Recognition（KDD, 2022；CIRCA）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3534678.3539041)][[CODE](https://github.com/NetManAIOps/CIRCA)]：代表已知结构约束下的机制变化检验路线。
+- CausalRCA: Causal Inference Based Precise Fine-Grained Root Cause Localization for Microservice Applications（Journal of Systems and Software, 2023）[[PDF](https://www.sciencedirect.com/science/article/pii/S0164121223001193)][[CODE](https://github.com/AXinx/CausalRCA_code)]：代表连续优化因果结构学习与图排序组合路线。
+- BARO: Robust Root Cause Analysis for Microservices via Multivariate Bayesian Online Change Point Detection（FSE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3660805)][[CODE](https://github.com/phamquiluan/baro)]：代表不恢复完整因果图、直接从分布突变排序根因的对照路线。
+
+
+### 9.5 代表论文五：RCACopilot——从传统遥测处理走向 LLM 事故诊断
+
+**代表论文：**
+
+- Automatic Root Cause Analysis via Large Language Models for Cloud Incidents（EuroSys, 2024；RCACopilot）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3627703.3629553)]：根据告警类型调用预定义事故处理器收集指标、日志和 Trace，再由 LLM 预测根因类别并生成解释。其第 7 节 Related Work 同时回顾传统多源 RCA 和 LLM 软件工程应用。
+
+**RCACopilot Related Work 中与 RCA 直接相关的工作：**
+
+- Recommending Root-Cause and Mitigation Steps for Cloud Incidents using Large Language Models（ICSE, 2023）[[PDF](https://www.microsoft.com/en-us/research/uploads/prod/2023/02/ICSE2023_LLM4IncidentManagement.pdf)]：基于四万余起真实云事故微调 GPT-3.x，根据事故标题和摘要生成根因及缓解步骤。
+- Scalable Statistical Root Cause Analysis on App Telemetry（ICSE-SEIP, 2021）[[PDF](https://doi.org/10.1109/ICSE-SEIP52600.2021.00038)]：代表 RCACopilot 回顾的指标故障模式挖掘路线。
+- Practical Root Cause Localization for Microservice Systems via Trace Analysis（IWQoS, 2021；TraceRCA）[[PDF](https://netman.aiops.org/wp-content/uploads/2021/05/1570705191.pdf)][[CODE](https://github.com/NetManAIOps/TraceRCA)]：代表其回顾的 Trace 故障服务定位路线。
+
+
+### 9.6 代表论文六：传播感知基准——用新基准回看全部技术路线
+
+**代表论文：**
+
+- Rethinking the Evaluation of Microservice RCA with a Fault Propagation-Aware Benchmark（FSE, 2026）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3797100)][[CODE](https://zenodo.org/records/19494726)]：构建包含复杂故障传播、动态负载、可观测盲区和分层真值的新基准，重新实现并评测 11 种 RCA 方法。其 Related Work 先区分指标、日志、Trace 单模态方法和多模态方法，再把 RCAEval 视为直接前序评测工作。
+
+**该论文 Related Work 中的单模态工作：**
+
+- Root Cause Analysis of Failures in Microservices through Causal Discovery（NeurIPS, 2022；RCD）[[PDF](https://dl.acm.org/doi/pdf/10.5555/3600270.3602529)][[CODE](https://github.com/azamikram/rcd)]：指标因果发现路线代表。
+- Causal Inference-Based Root Cause Analysis for Online Service Systems with Intervention Recognition（KDD, 2022；CIRCA）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3534678.3539041)][[CODE](https://github.com/NetManAIOps/CIRCA)]：指标机制变化与干预识别路线代表。
+- MicroHECL: High-Efficient Root Cause Localization in Large-Scale Microservice Systems（ICSE-SEIP, 2021）[[PDF](https://doi.org/10.1109/ICSE-SEIP52600.2021.00043)]：调用图异常传播链搜索路线代表。
+- BARO: Robust Root Cause Analysis for Microservices via Multivariate Bayesian Online Change Point Detection（FSE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3660805)][[CODE](https://github.com/phamquiluan/baro)]：指标分布突变与稳健排序路线代表。
+- MicroRank: End-to-End Latency Issue Localization with Extended Spectrum Analysis in Microservice Environments（The Web Conference, 2021）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3442381.3449905)]：Trace 频谱和调用图排序路线代表。
+
+**该论文 Related Work 中的多模态工作：**
+
+- Eadro: An End-to-End Troubleshooting Framework for Microservices on Multi-source Data（ICSE, 2023）[[PDF](https://arxiv.org/pdf/2302.05092)]：代表多模态编码和检测—定位联合学习。
+- TrinityRCL: Multi-Granular and Code-Level Root Cause Localization Using Multiple Types of Telemetry Data in Microservice Systems（IEEE Transactions on Software Engineering, 2023）[[PDF](https://ieeexplore.ieee.org/document/10034937)]：代表多源因果图与服务—主机—指标—代码多粒度定位。
+- Nezha: Interpretable Fine-Grained Root Causes Analysis for Microservices on Multi-modal Observability Data（ESEC/FSE, 2023）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3611643.3616249)][[CODE](https://github.com/IntelligentDDS/Nezha)]：代表事件统一表示和正常/故障模式对比。
+- Robust Failure Diagnosis of Microservice System through Multimodal Data（IEEE Transactions on Services Computing, 2023；DiagFusion）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2025/09/Robust_Failure_Diagnosis_of_Microservice_System_Through_Multimodal_Data.pdf)][[CODE](https://github.com/AIOps-Lab-NKU/DiagFusion)]：代表统一实例表征和图神经网络联合故障分类、根因定位。
+- ART: A Unified Unsupervised Framework for Incident Management in Microservice Systems（ASE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3691620.3695537)]：代表多模态事件管理的统一无监督框架。
+- MRCA: Metric-level Root Cause Analysis for Microservices via Multi-Modal Data（ASE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3691620.3695485)]：利用日志和 Trace 缩小服务范围，再扩展指标因果图并输出指标级根因。
+
+**该论文 Related Work 中的直接前序评测：**
+
+- Root Cause Analysis for Microservice System based on Causal Inference: How Far Are We?（ASE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3691620.3695065)][[CODE](https://github.com/phamquiluan/RCAEval/tree/ase24)]：在既有数据集上揭示因果发现和排序组合的不稳定性。
+- RCAEval: A Benchmark for Root Cause Analysis of Microservice Systems with Telemetry Data（The Web Conference Companion, 2025）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3701716.3715522)][[CODE](https://github.com/phamquiluan/RCAEval)]：统一遥测数据格式和评测协议，为跨系统比较不同 RCA 方法提供基准套件。
+
+
+---
+
+## 10. 顶尖专家、重要资深合作者与共同课题
+
+
+### 10.1 张圣林院长：南开 AIOps、清华 NetMan 与产业故障诊断主线
+
+
+**代表工作：**
+
+- Localizing Failure Root Causes in a Microservice through Causality Inference（IWQoS, 2020；MicroCause）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2020/07/paper-IWQOS2020-MicroCause.pdf)]：以时序因果图和时间因果随机游走定位微服务内部根因指标，是张圣林—裴丹因果诊断路线的早期代表。
+- CMDiagnostor: An Ambiguity-Aware Root Cause Localization Approach Based on Call Metric Data（The Web Conference, 2023）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2023/02/WWW23-CMDiagnostor.pdf)][[CODE](https://github.com/NetManAIOps/CMDiagnostor)]：用流量回归消除调用指标构图歧义，再执行异常检测、剪枝和根因排序。
+- Robust Failure Diagnosis of Microservice System through Multimodal Data（IEEE Transactions on Services Computing, 2023；DiagFusion）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2025/09/Robust_Failure_Diagnosis_of_Microservice_System_Through_Multimodal_Data.pdf)][[CODE](https://github.com/AIOps-Lab-NKU/DiagFusion)]：融合指标、日志、调用链与依赖图，联合定位根因实例和故障类型。
+- Microservice Root Cause Analysis With Limited Observability Through Intervention Recognition in the Latent Space（KDD, 2024；LatentScope）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2024/09/SIGKDD_24_LatentScope.pdf)][[CODE](https://github.com/eBay/LatentScope)]：在有限可观测条件下以潜变量干预识别处理跨服务、Pod 和主机的异构根因。
+- No More Data Silos: Unified Microservice Failure Diagnosis With Temporal Knowledge Graph（IEEE Transactions on Services Computing, 2024；UniDiag）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2025/09/No_More_Data_Silos_Unified_Microservice_Failure_Diagnosis_With_Temporal_Knowledge_Graph.pdf)][[CODE](https://github.com/AIOps-Lab-NKU/UniDiag)]：以时序知识图谱统一三类遥测并支持故障检测、定位和分诊。
+- FoundRoot: Towards Foundation Model for Root Cause Analysis via Structured Deep Thinking（ICSE, 2026）[[PDF](https://netman.aiops.org/wp-content/uploads/2026/01/foundroot_camera_ready.pdf)][[CODE](https://github.com/NetManAIOps/FoundRoot)]：联合清华与字节研究团队训练结构化深度思考的 RCA 基础模型。
+
+
+### 10.2 裴丹：AIOps 开放平台、因果推断与多模态诊断
+
+**代表工作：**
+
+- Causal Inference-Based Root Cause Analysis for Online Service Systems with Intervention Recognition（KDD, 2022；CIRCA）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3534678.3539041)][[CODE](https://github.com/NetManAIOps/CIRCA)]：把在线服务根因分析形式化为干预识别，利用系统架构与因果假设构建因果贝叶斯网络。
+- OpenRCA: Can Large Language Models Locate the Root Cause of Software Failures?（ICLR, 2025）[[PDF](https://openreview.net/pdf?id=M4qNIzQYpd)][[CODE](https://github.com/microsoft/OpenRCA)]：与微软及何品佳团队构建真实软件故障基准和可调用数据分析工具的 RCA-Agent。
+- FoundRoot: Towards Foundation Model for Root Cause Analysis via Structured Deep Thinking（ICSE, 2026）[[PDF](https://netman.aiops.org/wp-content/uploads/2026/01/foundroot_camera_ready.pdf)][[CODE](https://github.com/NetManAIOps/FoundRoot)]：与张圣林、字节资深研究人员共同推进跨系统 RCA 基础模型。
+
+
+### 10.3 微软 AIOps 负责人群：真实云事故、知识与 Agent
+
+微软[官方 AIOps 项目页](https://www.microsoft.com/en-us/research/project/aiops/groups/)表明，董美负责 Data/Knowledge/Intelligence 方向，林庆维、Saravan Rajmohan、Chetan Bansal 等长期从事云运维可靠性、开发效率和资源效率研究。这一组织关系比单篇作者表更能证明稳定合作。
+
+**代表工作：**
+
+- Recommending Root-Cause and Mitigation Steps for Cloud Incidents using Large Language Models（ICSE, 2023）[[PDF](https://www.microsoft.com/en-us/research/uploads/prod/2023/02/ICSE2023_LLM4IncidentManagement.pdf)]：在四万余起真实云事故上比较零样本、单任务和多任务微调，并由事故负责人评估根因与缓解步骤。
+- AutoARTS: Taxonomy, Insights and Tools for Root Cause Labelling of Incidents in Microsoft Azure（USENIX ATC, 2023）[[PDF](https://www.usenix.org/system/files/atc23-dogga.pdf)]：分析数年、两千余个 Azure 事故建立层次化贡献因素分类体系，并自动辅助事故复盘中的多标签根因标注。
+- Automatic Root Cause Analysis via Large Language Models for Cloud Incidents（EuroSys, 2024；RCACopilot）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3627703.3629553)]：按告警类型匹配诊断处理器、聚合运行时信息，再由 LLM 预测根因类别并生成解释。
+- OpenRCA: Can Large Language Models Locate the Root Cause of Software Failures?（ICLR, 2025）[[PDF](https://openreview.net/pdf?id=M4qNIzQYpd)][[CODE](https://github.com/microsoft/OpenRCA)]：与裴丹、何品佳等合作，把微软真实系统经验转化为开放多模态 RCA 基准。
+- Aloha: Localizing Batch Failures in Large-scale Cloud Systems via Contrast Analysis and Human-in-the-Loop Agent（FSE Industry, 2026）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2026/04/Yujia__Aloha_to_FSE_26.pdf)]：与张圣林团队以对比分析和人在回路 Agent 处理具有共同根因的大规模批量云故障。
+
+
+### 10.4 Hongyu Zhang—Huong Ha—Michael R. Lyu：智能事故管理与韧性在线服务
+
+**代表工作：**
+
+- BARO: Robust Root Cause Analysis for Microservices via Multivariate Bayesian Online Change Point Detection（FSE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3660805)][[CODE](https://github.com/phamquiluan/baro)]：用多变量贝叶斯在线变点检测统一故障检测和根因排序，强调对异常窗口偏差和参数的稳健性。
+- Root Cause Analysis for Microservice System based on Causal Inference: How Far Are We?（ASE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3691620.3695065)][[CODE](https://github.com/phamquiluan/RCAEval/tree/ase24)]：统一评测因果发现算法、排序规则和数据预处理组合。
+- TORAI: Multi-Source Root Cause Analysis for Blind Spots in the Microservice Service Call Graph（FSE, 2026）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3808137)][[CODE](https://github.com/phamquiluan/RCAEval/tree/fse26)]：在调用图存在黑盒服务和 Trace 盲区时，以多源异常强度、聚类、因果排序和假设检验完成定位。
+- COCA: Generative Root Cause Analysis for Distributed Systems with Code Knowledge（ICSE, 2025）[[PDF](https://www.cse.cuhk.edu.hk/lyu/_media/conference/yli_icse2025_coca.pdf)]：Michael R. Lyu 团队用代码知识增强分布式系统根因定位和自然语言总结。
+
+### 10.5 Ying Li—Gang Huang：北大—阿里多模态诊断与 Agentic RCL
+
+**代表工作：**
+
+- FAMOS: Fault Diagnosis for Microservice Systems through Effective Multi-Modal Data Fusion（ICSE, 2025）[[PDF](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11029848)]：北大—阿里合作，通过独立模态编码、高斯注意力和交叉注意力完成根因服务定位及故障类型诊断。
+- United We Stand: Towards End-to-End Log-based Fault Diagnosis via Interactive Multi-Task Learning（ASE, 2025；Chimera）[[PDF](https://arxiv.org/pdf/2509.24364)]：统一日志异常检测与根因定位，通过双向知识传递减少诊断偏差累积。
+- Agentic Memory Enhanced Recursive Reasoning for Root Cause Localization in Microservices（ICSE-SEIP, 2026；AMER-RCL）[[PDF](https://arxiv.org/pdf/2601.02732)]：与阿里、中国电信合作，以记忆增强递归推理复用跨告警诊断经验。
+- Hypothesize-Then-Verify: Speculative Root Cause Analysis for Microservices with Pathwise Parallelism（ICSE-NIER, 2026；SpecRCA）[[PDF](https://arxiv.org/pdf/2601.02736)]：与阿里合作，以并行“假设—验证”提高 LLM RCA 的探索多样性和效率。
