@@ -486,6 +486,9 @@
 
 - Towards In-Depth Root Cause Localization for Microservices with Multi-Agent Recursion-of-Thought（IEEE Transactions on Dependable and Secure Computing, 2026）[[PDF](https://arxiv.org/pdf/2605.14866)] [[CODE](https://github.com/LLMLog/RCLAgent)]：RCLAgent 按 Trace 图为 Span 分配专用 Agent，并沿拓扑递归、并行深入证据，最后融合根级诊断报告和全局证据图，以缓解上下文爆炸和串行推理低效。
 
+#### 7.5.2 骨架因果图 + 记忆力增强多智能体
+- KRCA: An Efficient Root Cause Analysis System in Hyper-Scale Microservice Systems via Agentic AI（ASE Industry Track，2026）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2026/07/KRCA_ACM_ASE26.pdf)]: 面向超大规模动态微服务系统，先沿 API 调用依赖结合失败率与延迟执行递归下钻，缩小可疑服务范围；再将异常指标实例化为高召回骨架因果图，并通过带分层记忆和历史案例检索的多智能体协作验证因果关系，最终输出根因服务、故障类型及诊断证据。
+
 ### 7.6 代码知识、基础模型与专家协作
 
 #### 7.6.1 代码知识增强的生成式 RCA
