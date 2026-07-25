@@ -582,11 +582,101 @@
 
 - iVRIDA-Fleet: Unsupervised Rail Vehicle Running Instability Detection Algorithm for Passenger Vehicle Fleet（Vehicle System Dynamics, 2025）[[PDF](https://www.tandfonline.com/doi/pdf/10.1080/00423114.2024.2335267)]：以 PCA、稀疏自编码器或 LSTM 编码器—解码器检测车队运行失稳，并在潜空间聚类根因模式，再结合车辆和轨道维护记录验证磨耗车轮、钢轨轮廓及轨距等轮轨因素。
 
+# 9.IEEE Transactions on Services Computing 中的知识图谱相关论文
 
-## 9. 代表论文 → Related Work → 研究分支
+## 9.1、知识图谱构建、查询、融合与演化
+
+### 9.11. 企业知识图谱构建与查询
+
+- **Building and Querying an Enterprise Knowledge Graph**（IEEE TSC, 2019, 12(3): 356–369）[[DOI](https://doi.org/10.1109/TSC.2017.2711600)]：面向企业内部异构数据设计知识图谱构建、实体链接、查询和维护流程，并将能力封装为一组知识图谱服务
+
+### 9.1.2. 编程知识图谱融合
+
+- **1+1>2: Programming Know-What and Know-How Knowledge Fusion, Semantic Enrichment and Coherent Application**（IEEE TSC, 2023, 16(3): 1540–1554）[[DOI](https://doi.org/10.1109/TSC.2022.3207273)]：融合描述 API“是什么”的 API-KG 与描述编程任务“怎么做”的 Task-KG，并补全跨图语义关系以支持 API 与任务检索
+
+### 9.1.3. 区块链支持的知识图谱协同演化
+
+- **Decentralised Knowledge Graph Evolution Via Blockchain**（IEEE TSC, 2024, 17(1): 169–182）[[DOI](https://doi.org/10.1109/TSC.2023.3337873)]：利用区块链记录分布式参与者对知识图谱的新增、修改和验证操作，实现可追溯、去中心化的知识图谱演化
+
+---
+
+## 9.2、知识图谱增强的推荐与对话推理
+
+### 9.2.1. 时序服务知识图谱推荐
+
+- **Temporal Knowledge Graph Embedding for Effective Service Recommendation**（IEEE TSC, 2022, 15(5): 3077–3088）[[DOI](https://doi.org/10.1109/TSC.2021.3075053)]：构建包含用户—服务交互时间信息的时序服务知识图谱，经图补全和卷积嵌入学习实现时间感知的服务推荐
+
+### 9.2.2. 知识图谱推理增强的对话推荐
+
+- **Hierarchical Reinforcement Learning for Conversational Recommendation With Knowledge Graph Reasoning and Heterogeneous Questions**（IEEE TSC, 2023, 16(5): 3439–3452）[[DOI](https://doi.org/10.1109/TSC.2023.3269396)]：在知识图谱上联合执行多跳路径推理与层次强化学习，使对话推荐系统能够提出不同类型的问题并逐步缩小候选项目
+
+### 9.2.3. 知识图谱增强的掩码自编码推荐
+
+- **Knowledge Graph-Enhanced Masked Auto-Encoders for Recommendation Systems**（IEEE TSC, 2025, 18(6): 3946–3958）[[DOI](https://doi.org/10.1109/TSC.2025.3632319)]：将知识图谱结构注入掩码自编码器，通过重构缺失交互与知识关系提升稀疏和噪声环境下的推荐鲁棒性
+
+### 9.2.4. 元宇宙服务知识图谱去噪
+
+- **MSKD: A Knowledge Denoising Framework for Metaverse Service Recommendation**（IEEE TSC, 2025, 18(6): 4030–4042）[[DOI](https://doi.org/10.1109/TSC.2025.3625048)]：融合外部服务知识和交互数据构建用户偏好知识图谱，通过自适应剪枝、知识图谱瓶颈与对比学习消除无关实体和关系
+
+---
+
+## 9.3、知识图谱驱动的 Service 管理、发现与故障诊断
+
+### 9.3.1. 云服务 SLA 知识图谱
+
+- **A Semantically Rich Framework to Automate Cloud Service Level Agreements**（IEEE TSC, 2023, 16(1): 53–64）[[DOI](https://doi.org/10.1109/TSC.2022.3140585)]：从云服务 SLA 文档中抽取服务指标、约束和义务规则并组织为语义知识图谱，以自动比较供应商并辅助云服务选择
+
+### 9.3.2. 网络保险服务语义知识图谱
+
+- **Semantically Rich Framework to Automate Cyber Insurance Services**（IEEE TSC, 2023, 16(1): 588–599）[[DOI](https://doi.org/10.1109/TSC.2021.3113272)]：结合语义网、本体和模态逻辑从网络保险条款中抽取保障、排除项与规则，形成机器可处理的策略知识表示并支持保险服务匹配
+
+### 9.3.3. 日志知识图谱故障诊断
+
+- **LogKG: Log Failure Diagnosis Through Knowledge Graph**（IEEE TSC, 2023, 16(5): 3493–3507）[[DOI](https://doi.org/10.1109/TSC.2023.3293890)]：把日志模板、变量、组件、故障及处置关系构造成日志知识图谱，通过历史故障聚类和图推理定位故障根因
+
+### 9.3.4. 微服务时序知识图谱统一诊断
+
+- **No More Data Silos: Unified Microservice Failure Diagnosis With Temporal Knowledge Graph**（IEEE TSC, 2024, 17(6): 4013–4026）[[DOI](https://doi.org/10.1109/TSC.2024.3489444)] [[CODE](https://github.com/AIOps-Lab-NKU/UniDiag)]：用时序知识图谱统一日志、指标和调用链，并通过动态图表示同时完成故障检测、根因定位和故障类型识别
+
+### 9.3.5. 面向服务链接预测的模式知识嵌入
+
+- **Learning Schema Embeddings for Service Link Prediction: A Coupled Matrix-Tensor Factorization Approach**（IEEE TSC, 2025, 18(2): 883–896）[[DOI](https://doi.org/10.1109/TSC.2025.3541552)] [[CODE](https://github.com/twEErwdf/SchemaE)]：联合建模知识图谱实体—关系三元组和实体类型模式，通过耦合矩阵—张量分解提升服务链接预测、发现、推荐和组合能力
+
+### 9.3.6. 星地协同知识服务框架
+
+- **An Efficient and Stable Knowledge Service Framework for Satellite-Ground Collaboration**（IEEE TSC, 2025, 18(6): 3449–3462）[[DOI](https://doi.org/10.1109/TSC.2025.3607909)]：由星上轻量模型处理实时观测，地面知识图谱提供知识补充、异常原因分析和图谱推理，并结合链路预测与路由保证知识服务稳定交付
+
+---
+
+## 9.4、知识图谱在安全与行业数据分析中的应用
+
+### 9.4.1. 模糊二部知识图谱医疗欺诈识别
+
+- **Identification of Fraudulent Healthcare Claims Using Fuzzy Bipartite Knowledge Graphs**（IEEE TSC, 2023, 16(6): 3931–3945）[[DOI](https://doi.org/10.1109/TSC.2023.3296782)]：以诊断、诊疗过程和医疗服务提供者构建模糊二部知识图谱，利用关系异常识别可疑医疗索赔
+
+### 9.4.2. 软件漏洞知识图谱
+
+- **KG4VA: Constructing Vulnerability Knowledge Graph for Software Vulnerability Assessment**（IEEE TSC, 2025, 18(6): 3932–3945）[[DOI](https://doi.org/10.1109/TSC.2025.3607682)]：融合软件、漏洞、弱点、攻击方式和安全属性构建漏洞知识图谱，以结构化关联增强软件漏洞评估
+---
+
+## 9.5、与 Service 直接相关的知识图谱论文
+
+| Service 研究方向 | 论文 | 知识图谱作用 |
+| --- | --- | --- |
+| 服务推荐 | Temporal Knowledge Graph Embedding for Effective Service Recommendation | 构建时序服务知识图谱并学习服务嵌入 |
+| 云服务管理 | A Semantically Rich Framework to Automate Cloud Service Level Agreements | 将 SLA 条款、指标和义务组织为知识图谱 |
+| 网络保险服务 | Semantically Rich Framework to Automate Cyber Insurance Services | 将保单保障、排除项和规则语义化 |
+| 服务故障诊断 | LogKG | 组织日志、组件、故障和解决方案关系 |
+| 微服务统一诊断 | No More Data Silos / UniDiag | 统一日志、指标、调用链及其时间关系 |
+| 服务发现／组合 | Learning Schema Embeddings for Service Link Prediction | 通过模式约束知识嵌入预测服务链接 |
+| 星地知识服务 | An Efficient and Stable Knowledge Service Framework | 地面知识图谱辅助星上推理和原因分析 |
+| 元宇宙服务推荐 | MSKD | 构建并去噪用户偏好—服务知识图谱 |
 
 
-### 9.1 代表论文一：Nezha——以单模态三分法汇聚到多模态细粒度 RCA
+## 10. 代表论文 → Related Work → 研究分支
+
+
+### 10.1 代表论文一：Nezha——以单模态三分法汇聚到多模态细粒度 RCA
 
 **代表论文：**
 
@@ -610,7 +700,7 @@
 - MicroRank: End-to-End Latency Issue Localization with Extended Spectrum Analysis in Microservice Environments（The Web Conference, 2021）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3442381.3449905)]：将正常/异常请求频谱与调用图 PageRank 结合，区分覆盖相近的根因服务或操作。
 
 
-### 9.2 代表论文二：Eadro——从单源定位推进到多源、端到端联合学习
+### 10.2 代表论文二：Eadro——从单源定位推进到多源、端到端联合学习
 
 **代表论文：**
 
@@ -626,7 +716,7 @@
 - MicroRank: End-to-End Latency Issue Localization with Extended Spectrum Analysis in Microservice Environments（The Web Conference, 2021）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3442381.3449905)]：以 Trace 为主要输入，将请求频谱和服务调用关系结合起来定位延迟根因。
 
 
-### 9.3 代表论文三：BARO——将指标 RCA 细分为统计、拓扑图和因果图
+### 10.3 代表论文三：BARO——将指标 RCA 细分为统计、拓扑图和因果图
 
 **代表论文：**
 
@@ -652,7 +742,7 @@
 - CMDiagnostor: An Ambiguity-Aware Root Cause Localization Approach Based on Call Metric Data（The Web Conference, 2023）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2023/02/WWW23-CMDiagnostor.pdf)][[CODE](https://github.com/NetManAIOps/CMDiagnostor)]：通过流量回归消除调用指标构图歧义，再执行异常检测、传播链剪枝和候选排序。
 
 
-### 9.4 代表论文四：因果 RCA 审计——从提出新方法转向验证发现器与排序器
+### 10.4 代表论文四：因果 RCA 审计——从提出新方法转向验证发现器与排序器
 
 **代表论文：**
 
@@ -672,7 +762,7 @@
 - BARO: Robust Root Cause Analysis for Microservices via Multivariate Bayesian Online Change Point Detection（FSE, 2024）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3660805)][[CODE](https://github.com/phamquiluan/baro)]：代表不恢复完整因果图、直接从分布突变排序根因的对照路线。
 
 
-### 9.5 代表论文五：RCACopilot——从传统遥测处理走向 LLM 事故诊断
+### 10.5 代表论文五：RCACopilot——从传统遥测处理走向 LLM 事故诊断
 
 **代表论文：**
 
@@ -685,7 +775,7 @@
 - Practical Root Cause Localization for Microservice Systems via Trace Analysis（IWQoS, 2021；TraceRCA）[[PDF](https://netman.aiops.org/wp-content/uploads/2021/05/1570705191.pdf)][[CODE](https://github.com/NetManAIOps/TraceRCA)]：代表其回顾的 Trace 故障服务定位路线。
 
 
-### 9.6 代表论文六：传播感知基准——用新基准回看全部技术路线
+### 10.6 代表论文六：传播感知基准——用新基准回看全部技术路线
 
 **代表论文：**
 
@@ -716,10 +806,10 @@
 
 ---
 
-## 10. 顶尖专家、重要资深合作者与共同课题
+## 11. 顶尖专家、重要资深合作者与共同课题
 
 
-### 10.1 张圣林院长：南开 AIOps、清华 NetMan 与产业故障诊断主线
+### 11.1 张圣林院长：南开 AIOps、清华 NetMan 与产业故障诊断主线
 
 
 **代表工作：**
@@ -732,7 +822,7 @@
 - FoundRoot: Towards Foundation Model for Root Cause Analysis via Structured Deep Thinking（ICSE, 2026）[[PDF](https://netman.aiops.org/wp-content/uploads/2026/01/foundroot_camera_ready.pdf)][[CODE](https://github.com/NetManAIOps/FoundRoot)]：联合清华与字节研究团队训练结构化深度思考的 RCA 基础模型。
 
 
-### 10.2 裴丹：AIOps 开放平台、因果推断与多模态诊断
+### 11.2 裴丹：AIOps 开放平台、因果推断与多模态诊断
 
 **代表工作：**
 
@@ -741,7 +831,7 @@
 - FoundRoot: Towards Foundation Model for Root Cause Analysis via Structured Deep Thinking（ICSE, 2026）[[PDF](https://netman.aiops.org/wp-content/uploads/2026/01/foundroot_camera_ready.pdf)][[CODE](https://github.com/NetManAIOps/FoundRoot)]：与张圣林、字节资深研究人员共同推进跨系统 RCA 基础模型。
 
 
-### 10.3 微软 AIOps 负责人群：真实云事故、知识与 Agent
+### 11.3 微软 AIOps 负责人群：真实云事故、知识与 Agent
 
 微软[官方 AIOps 项目页](https://www.microsoft.com/en-us/research/project/aiops/groups/)表明，董美负责 Data/Knowledge/Intelligence 方向，林庆维、Saravan Rajmohan、Chetan Bansal 等长期从事云运维可靠性、开发效率和资源效率研究。这一组织关系比单篇作者表更能证明稳定合作。
 
@@ -754,7 +844,7 @@
 - Aloha: Localizing Batch Failures in Large-scale Cloud Systems via Contrast Analysis and Human-in-the-Loop Agent（FSE Industry, 2026）[[PDF](https://nkcs.iops.ai/wp-content/uploads/2026/04/Yujia__Aloha_to_FSE_26.pdf)]：与张圣林团队以对比分析和人在回路 Agent 处理具有共同根因的大规模批量云故障。
 
 
-### 10.4 Hongyu Zhang—Huong Ha—Michael R. Lyu：智能事故管理与韧性在线服务
+### 11.4 Hongyu Zhang—Huong Ha—Michael R. Lyu：智能事故管理与韧性在线服务
 
 **代表工作：**
 
@@ -763,7 +853,7 @@
 - TORAI: Multi-Source Root Cause Analysis for Blind Spots in the Microservice Service Call Graph（FSE, 2026）[[PDF](https://dl.acm.org/doi/pdf/10.1145/3808137)][[CODE](https://github.com/phamquiluan/RCAEval/tree/fse26)]：在调用图存在黑盒服务和 Trace 盲区时，以多源异常强度、聚类、因果排序和假设检验完成定位。
 - COCA: Generative Root Cause Analysis for Distributed Systems with Code Knowledge（ICSE, 2025）[[PDF](https://www.cse.cuhk.edu.hk/lyu/_media/conference/yli_icse2025_coca.pdf)]：Michael R. Lyu 团队用代码知识增强分布式系统根因定位和自然语言总结。
 
-### 10.5 Ying Li—Gang Huang：北大—阿里多模态诊断与 Agentic RCL
+### 11.5 Ying Li—Gang Huang：北大—阿里多模态诊断与 Agentic RCL
 
 **代表工作：**
 
