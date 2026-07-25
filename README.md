@@ -520,6 +520,67 @@
 - AutoARTS: Taxonomy, Insights and Tools for Root Cause Labelling of Incidents in Microsoft Azure（USENIX ATC, 2023）[[PDF](https://www.usenix.org/system/files/atc23-dogga.pdf)]：分析数年、两千余个 Azure 事故建立层次化贡献因素分类体系，并自动辅助事故复盘中的多标签根因标注。
 
 ---
+## 8. 其他垂直行业与关键基础设施中的根因分析应用（Cross-Domain RCA Applications）
+
+- **方法共性**：这些工作把根因分析从软件服务运维扩展到制造过程、电力系统、建筑设施、核系统、数据库、安全分析和轨道交通等领域，核心链路通常是“领域多源观测 → 异常或因果结构建模 → 根因实体／变量／代码位置排序 → 领域记录或干预结果验证”。
+
+### 8.1 智能制造与流程工业
+
+#### 8.1.1 多层预测图与根因贡献量化
+
+- MPGE and RootRank: A Sufficient Root Cause Characterization and Quantification Framework for Industrial Process Faults（Neural Networks, 2023）[[PDF](https://www.sciencedirect.com/science/article/pii/S0893608023000424)] [[CODE](https://github.com/chunhuiz/MPGE-RootRank-for-root-cause-diagnosis)]：构建稀疏多层预测图，通过层次邻接剪枝刻画直接与间接 Granger 因果关系，并以 RootRank 将多级故障传播结构转化为根因变量贡献分数。
+
+#### 8.1.2 非线性动态 Granger 因果诊断
+
+- Nonlinear Dynamic Granger Causality Analysis Framework for Root-Cause Diagnosis of Quality-Related Faults in Manufacturing Processes（IEEE Transactions on Automation Science and Engineering, 2024）[[PDF](https://ieeexplore.ieee.org/document/10144440)]：以非线性动态 Granger 因果模型联合刻画过程变量和质量变量的时序作用，重建质量相关故障传播关系并定位根因变量。
+
+#### 8.1.3 工厂级分布式直接因果分析
+
+- Hierarchical Fault Root Cause Identification in Plant-Wide Processes Using Distributed Direct Causality Analysis（IEEE Transactions on Industrial Informatics, 2024）[[PDF](https://ieeexplore.ieee.org/document/10226535)]：先以分布式过程监测定位故障单元，再通过部分交叉映射区分直接和间接因果关系，在“单元—变量”两层逐级定位根因。
+
+#### 8.1.4 工业知识图谱与数据联合推理
+
+- Root-KGD: A Novel Framework for Industrial Fault Root Cause Diagnosis Based on Knowledge Graph and Data（IEEE Sensors Journal, 2026）[[PDF](https://arxiv.org/pdf/2406.13664)]：以工业知识图谱表示变量、设备和流股关系，将数据驱动的故障贡献写入实体属性，再通过故障传播推理统一排序根因变量、设备和流股。
+
+### 8.2 电力、建筑与核能基础设施
+
+#### 8.2.1 配电停电事件的数据融合与模式挖掘
+
+- ORCA: Outage Root Cause Analysis in DER-Rich Power Distribution System Using Data Fusion, Hierarchical Clustering and FP-Growth Rule Mining（IEEE Transactions on Smart Grid, 2024）[[PDF](https://doi.org/10.1109/TSG.2023.3281489)]：融合 D-PMU、计量和继电保护数据，通过集成扩展卡尔曼滤波、层次聚类与 FP-Growth 依次完成停电事件识别，并细化判定植被、天气、设备、保护和计划作业等原因。
+
+#### 8.2.2 建筑 HVAC 跨层故障的熵因果学习
+
+- An Entropy-Based Causality Framework for Cross-Level Faults Diagnosis and Isolation in Building HVAC Systems（Energy and Buildings, 2024）[[PDF](https://www.sciencedirect.com/science/article/pii/S0378778824004948)]：提出 Eigen-Entropy Causal Learning，从跨设备症状同步变化中自动学习贝叶斯网络，在不依赖人工因果拓扑的条件下隔离 HVAC 跨层故障根因。
+
+#### 8.2.3 核系统物理约束因果结构学习
+
+- Physics-Constrained Causal Structure Learning for Root Cause Analysis in Nuclear System Monitoring（Reliability Engineering & System Safety, 2026）[[PDF](https://www.sciencedirect.com/science/article/pii/S0951832026005077)]：从简化核系统物理模型提取方向约束并嵌入评分式因果结构搜索，通过排除物理上不可能的边提高小样本事故监测中的根节点识别与传播解释能力。
+
+### 8.3 数据库与数据平台服务
+
+#### 8.3.1 文档知识、工具检索与多大模型协作诊断
+
+- D-Bot: Database Diagnosis System Using Large Language Models（VLDB, 2024）[[PDF](https://arxiv.org/pdf/2312.01454)] [[CODE](https://github.com/TsinghuaDatabaseGroup/DB-GPT)]：从数据库诊断文档离线抽取知识，自动检索知识与工具并生成提示，再通过树搜索和多大模型协作诊断单根因及多根因异常并生成处置报告。
+
+#### 8.3.2 慢查询多模态根因影响排序
+
+- RCRank: Multimodal Ranking of Root Causes of Slow Queries in Cloud Database Systems（VLDB, 2025）[[PDF](https://arxiv.org/pdf/2503.04252)] [[CODE](https://github.com/decisionintelligence/RCRank)]：将 SQL、执行计划、执行日志和 KPI 进行自监督跨模态预训练，通过根因自适应 Cross-Transformer 识别慢查询原因，并按潜在加速收益进行影响感知排序。
+
+### 8.4 软件安全与嵌入式固件
+
+#### 8.4.1 反例奖励强化学习与漏洞根因定位
+
+- Racing on the Negative Force: Efficient Vulnerability Root-Cause Analysis Through Reinforcement Learning on Counterexamples（USENIX Security, 2024）[[PDF](https://www.usenix.org/system/files/usenixsecurity24-xu-dandan.pdf)] [[CODE](https://github.com/0xdd96/Racing-code)]：将会显著改变程序元素—崩溃相关性估计的反例作为强化学习奖励，引导模糊变异快速区分真正致因的代码元素并加速漏洞根因定位。
+
+#### 8.4.2 ARM 固件事件足迹与逆向数据传播
+
+- FirmRCA: Towards Post-Fuzzing Analysis on ARM Embedded Firmware with Efficient Event-Based Fault Localization（IEEE Symposium on Security and Privacy, 2025）[[PDF](https://arxiv.org/pdf/2410.18483)] [[CODE](https://github.com/NESA-Lab/FirmRCA)]：通过事件化内存访问足迹和历史驱动逆向执行处理固件内存别名，再以数据传播跟踪和可疑度策略排序导致崩溃的 ARM 指令。
+
+### 8.5 轨道交通运营与维护
+
+#### 8.5.1 车队运行失稳检测与轮轨根因聚类
+
+- iVRIDA-Fleet: Unsupervised Rail Vehicle Running Instability Detection Algorithm for Passenger Vehicle Fleet（Vehicle System Dynamics, 2025）[[PDF](https://www.tandfonline.com/doi/pdf/10.1080/00423114.2024.2335267)]：以 PCA、稀疏自编码器或 LSTM 编码器—解码器检测车队运行失稳，并在潜空间聚类根因模式，再结合车辆和轨道维护记录验证磨耗车轮、钢轨轮廓及轨距等轮轨因素。
 
 
 ## 9. 代表论文 → Related Work → 研究分支
